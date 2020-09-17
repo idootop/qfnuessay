@@ -1,0 +1,158 @@
+%---------------------------------------------------------------------------%
+%-                                                                         -%
+%-                           Document Style                                -%
+%-                                                                         -%
+%---------------------------------------------------------------------------%
+%->> Identification
+%---------------------------------------------------------------------------%
+\ProvidesPackage{qfnuessay}
+%------- 一些常用数学宏包 --------------------------
+\RequirePackage{amsmath,amsthm}
+\RequirePackage{amsfonts,amssymb}
+\RequirePackage{mathrsfs}
+\RequirePackage{bm}
+\RequirePackage{dsfont}
+%------------------------------------------------------
+\RequirePackage{ctex}          %-- 中文宏包
+\RequirePackage{color}          %-- 颜色宏包
+\RequirePackage[colorlinks,
+  linkcolor=red,
+  anchorcolor=blue,
+  citecolor=green,
+  CJKbookmarks=True]{hyperref}  %-- 超链接宏包
+\RequirePackage{cite}           %-- 引用宏包
+\RequirePackage{indentfirst}    %-- 首行缩进宏包
+
+%------  根据学校文件中的课程论文模板的实际情况，下面通过指定geometry 宏包的选项参数来自定义页面边距 ----------------
+\RequirePackage[
+  hoffset=5mm,%%装订线
+  left=2.5cm,      %% 左边距
+  right=2.5cm,     %% 右边距
+  top=2.5cm,       %% 上边距 包括页眉
+  bottom=2cm,    %% 下边距 包括页脚
+  headheight=0cm, %%页眉
+  footskip=1.0cm,  %% 页脚
+  paperwidth=21cm,
+  paperheight=29.7cm
+  ]{geometry}
+
+\def\baselinestretch{1}         %-- 行间距为1倍行间距
+%\setlength{\baselineskip}{20pt}  %-- 行间距为固定值20磅
+\setlength{\parskip}{0.8ex plus0.3ex minus0.3ex} % 段落间距
+\allowdisplaybreaks[4]       %% 允许多行公式中间换页
+%--------------------------------
+
+%----------------------- 字体设置 ----------------------------------------
+%---- 英文字体设置为 Times New Roman -------
+\RequirePackage{fontspec}
+\setmainfont{Times New Roman}
+%---------------------------------------
+\newcommand{\myfont}[1]{\setCJKfamilyfont{font}{#1}\CJKfamily{font}}
+%----------------------------------------------------------------------
+
+%\newcommand{\chuhao}{\fontsize{42pt}{\baselineskip}\selectfont}
+\newcommand{\xiaochuhao}{\fontsize{36pt}{\baselineskip}\selectfont}
+%\newcommand{\yihao}{\fontsize{28pt}{\baselineskip}\selectfont}
+\newcommand{\xiaoyihao}{\fontsize{24pt}{\baselineskip}\selectfont}
+\newcommand{\erhao}{\fontsize{21pt}{\baselineskip}\selectfont}
+%\newcommand{\xiaoerhao}{\fontsize{18pt}{\baselineskip}\selectfont}
+\newcommand{\sanhao}{\fontsize{15.75pt}{\baselineskip}\selectfont}
+\newcommand{\sihao}{\fontsize{14pt}{\baselineskip}\selectfont}
+\newcommand{\xiaosihao}{\fontsize{12pt}{\baselineskip}\selectfont}
+\newcommand{\wuhao}{\fontsize{10.5pt}{\baselineskip}\selectfont}
+%\newcommand{\xiaowuhao}{\fontsize{9pt}{\baselineskip}\selectfont}
+%\newcommand{\liuhao}{\fontsize{7.875pt}{\baselineskip}\selectfont}
+%\newcommand{\qihao}{\fontsize{5.25pt}{\baselineskip}\selectfont}
+%-------------------------------------------------------------------------
+
+%---------------- 设置目录、标题 -------------------------------------
+\RequirePackage{titletoc,titlesec}
+
+\renewcommand{\contentsname}{{
+\begin{center}
+\textbf{\sihao\heiti 目\ \ 录}
+\end{center}
+}}
+\RequirePackage[titles]{tocloft}
+\renewcommand{\cftdot}{$\cdot$}
+\renewcommand{\cftdotsep}{1.5}
+\renewcommand\cftsecdotsep{\cftdotsep}
+\renewcommand\cftsecleader{\cftdotfill{\cftsecdotsep}}
+
+
+\newcommand{\sectionname}{节}
+\titleformat{\section}[block]{\sihao\fangsong}{\thesection}{10pt}{}
+\titleformat{\subsection}[block]{\xiaosihao\heiti}{\thesubsection}{10pt}{}
+\titleformat{\subsubsection}[block]{\xiaosihao\fangsong}{\thesubsubsection}{10pt}{}
+%-- 下面设置各级标题左边以及与上下文内容的间距 ---
+\titlespacing{\section}{0pt}{0.6ex}{0.6ex}
+\titlespacing{\subsection}{0.5ex}{0.3ex}{0.3ex}
+\titlespacing{\subsubsection}{1ex}{0.3ex}{0.3ex}
+%------------------------------------------------------------------------
+
+
+
+%--------------- 设置定理环境 -----------------------------------------
+\newtheoremstyle{DingLi1}
+        {0.6ex plus 0.5ex minus .2ex}%上方的空行
+        {0.6ex plus 0.5ex minus .2ex}%下方的空行
+        {\kaishu}%内容字体
+        {}%缩进
+        {\heiti}%定理头部字体
+        {.}%定理头部后的标点
+        {1em}%定理头部后的空格
+        {}%定理头部的说明
+\theoremstyle{DingLi1}
+\numberwithin{equation}{section}
+\newtheorem{theorem}{\hspace{2em}定理}[section]
+\newtheorem{definition}{\hskip 2em 定义}[section]
+\newtheorem{lemma}{\hskip 2em 引理}[section]
+\newtheorem{corollary}{\hskip 2em 推论}[section]
+\newtheorem{assumption}{\hskip 2em 条件}[section]
+\newtheorem{remark}{\hskip 2em 注}[section]
+\newtheorem{proposition}{\hskip 2em 命题}[section]
+\newtheorem{property}{\hskip 2em 性质}[section]
+
+\newtheoremstyle{DingLi2}
+        {1ex plus 0.5ex minus .2ex}%上方的空行
+        {1ex plus 0.5ex minus .2ex}%下方的空行
+        {\songti}%内容字体
+        {}%缩进
+        {\heiti}%定理头部字体
+        {.}%定理头部后的标点
+        {1em}%定理头部后的空格
+        {}%定理头部的说明
+\theoremstyle{DingLi2}
+\newtheorem{example}{\hskip 2em 例}[section]
+
+\renewcommand{\proofname}{\heiti{ \emph{证明}}}%注意字体的设置
+%---------------------------------------------------------------------
+
+%---- 默认情况下itemize环境与上下文间距过大, ------------------------------
+%---- 内部条目间距过大，用enumitem宏包调整       ------------------------------
+\RequirePackage{enumitem}
+\setenumerate[1]{    %-- 数值表示级别
+itemsep=0pt,         %-- itemsep, 条目之间的距离
+partopsep=\parskip,  %-- partopsep, 条目与下面段落的距离
+parsep=\parskip,     %-- parsep, 条目里面段落之间的距离
+topsep=0pt}          %-- topsep, 列表环境与上文之间的距离
+\setitemize[1]{itemsep=0pt,partopsep=\parskip,parsep=\parskip,topsep=0pt}
+\setdescription{itemsep=0pt,partopsep=\parskip,parsep=\parskip,topsep=0pt}
+%---------------------------------------------------------------------
+
+
+
+%----- 设置图、表格式---------------------------------------
+\RequirePackage{graphicx}
+\RequirePackage{array,tabularx}  %-- 列表宏包
+\RequirePackage{booktabs}     %-- 用于制作三线表格
+\RequirePackage{diagbox}      %-- 改宏包可用于制做有斜线表头的表格
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+\RequirePackage{caption}      %--- 该宏包用来定制图表标题
+\captionsetup{labelsep=quad, margin =10pt ,labelfont={footnotesize}, font={footnotesize}}
+\captionsetup[table ]{ position=top}
+\captionsetup{font={footnotesize,bf}}  %-- 图表标题设置为小五号黑体
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
